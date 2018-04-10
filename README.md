@@ -1,5 +1,5 @@
 # Project Title
-Code for crate model and predict thai job salary
+Code for create model and predict thai job salary
 
 Executing this code requires Python 2.7 along with numpy , scipy , sklearn
 
