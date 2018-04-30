@@ -4,5 +4,5 @@
 	"VECTORIZER_2_PATH": "vect2.p",
 	"TRAIN_DATA_PATH": "train.csv",
 	"TEST_DATA_PATH": "test.csv",
-	"SUBMISSION_PATH": "result_linear.csv"
+	"SUBMISSION_PATH": "result.csv"
 }

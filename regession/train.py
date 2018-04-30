@@ -25,7 +25,12 @@ def LoadData(filePath):
 
 def fit(merged,salary):
 	tModel = time()	
-	model = linear_model.LinearRegression()
+	#model = linear_model.LinearRegression()
+	#model = svm.SVR(kernel='rbf', C=1e3, gamma=0.1)
+	#model = neighbors.KNeighborsRegressor(n_neighbors=19)
+	#model = tree.DecisionTreeRegressor()
+	#model = neural_network.MLPRegressor(hidden_layer_sizes=(50, ))
+	model = linear_model.BayesianRidge()
 	model.fit(merged,salary)
 	print 'Train model done in',time()-tModel,'seconds'
 	return model
@@ -39,7 +44,7 @@ def TokenizingData(jobs):
 	for i in xrange(trainNum):
 		job = jobs[i].data
 		salary.append(np.log(float(job['SalaryMid'])))
-		des.append(job['organization'] + ' ' + job['joblocation'] + ' ' + job['education'] + ' ' + 
+		des.append(job['level'] + ' ' + job['organization'] + ' ' + job['joblocation'] + ' ' + job['education'] + ' ' + 
 		job['experience'] + ' ' + job['employmentType'] + ' ' + job['industry'] + ' ' + job['jobfunction'])
 		titles.append(job['title'])
 	print 'Tokenizing'

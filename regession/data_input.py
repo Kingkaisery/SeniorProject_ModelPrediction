@@ -5,7 +5,7 @@ class data_input:
 	Input is a parsed row from the csv module'''
 	def __init__(self, parsedRow):
 		values = [string.strip().lower() for string in parsedRow]
-		categories = ["title", "organization", "joblocation", "education",
+		categories = ["title", "level","organization", "joblocation", "education",
 						"experience", "employmentType", "industry", "jobfunction",
 						"SalaryMid"]
 		self.data = dict(zip(categories, values))

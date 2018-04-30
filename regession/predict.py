@@ -6,6 +6,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.sparse import hstack
 import numpy as np
 from itertools import izip
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import explained_variance_score
+from sklearn.metrics import	r2_score
+
 
 def LoadData(filePath):
 	reader = csv.reader(open(filePath))
@@ -35,7 +40,7 @@ def getTestData(data,start,end,vect,vect2):
 	titleTests = []
 	for i in xrange(start,end):
 		job = data[i].data
-		desTests.append(job['organization'] + ' ' + job['joblocation'] + ' ' + job['education'] + ' ' + 
+		desTests.append(job['level'] + ' ' + job['organization'] + ' ' + job['joblocation'] + ' ' + job['education'] + ' ' + 
 		job['experience'] + ' ' + job['employmentType'] + ' ' + job['industry'] + ' ' + job['jobfunction'])
 		titleTests.append(job['title'])
 	title = vect.transform(titleTests)
@@ -58,8 +63,17 @@ validTests = getTestData(validData,0,len(validData),vect,vect2)
 print 'predicting'
 predictions = np.exp(model.predict(validTests))
 
-print 'writing to csv'
-with open(paths['SUBMISSION_PATH'],'wb') as fOut:
-    out = csv.writer(fOut)
-    for row in izip(titles,validSalary,predictions):
-        out.writerow(row)
+#print 'writing to csv'
+#with open(paths['SUBMISSION_PATH'],'wb') as fOut:
+#    out = csv.writer(fOut)
+#    for row in izip(titles,validSalary,predictions):
+#        out.writerow(row)
+
+validSalary = map(int, validSalary)
+predictions	= map(int, predictions)
+
+print 'result'
+print mean_squared_error(validSalary, predictions)
+print mean_absolute_error(validSalary, predictions)
+print explained_variance_score(validSalary, predictions)
+print r2_score(validSalary, predictions)
