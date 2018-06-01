@@ -1,0 +1,14 @@
+{
+	"MODEL_PATH": "model.p",
+	"VECTORIZER_1_PATH": "vect1.p",
+	"VECTORIZER_2_PATH": "vect2.p",
+	"VECTORIZER_3_PATH": "vect3.p",
+	"VECTORIZER_4_PATH": "vect4.p",
+	"VECTORIZER_5_PATH": "vect5.p",
+	"VECTORIZER_6_PATH": "vect6.p",
+	"VECTORIZER_7_PATH": "vect7.p",
+	"VECTORIZER_8_PATH": "vect8.p",
+	"TRAIN_DATA_PATH": "traindata.csv",
+	"TEST_DATA_PATH": "testdata.csv",
+	"SUBMISSION_PATH": "result.csv"
+}
